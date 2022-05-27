@@ -1,23 +1,19 @@
 import logo from './logo.svg';
+import React from "react"
 import './App.css';
 
+import Stopwatch from './components/Stopwatch';
+import Timer from './components/Timer';
+
 function App() {
+  const [show,setShow] = React.useState(true)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+      <button onClick={()=>setShow(!show)}> {show?"show timer":"show stopwatch"}</button>
+      {show? <Stopwatch value={0} endtime={10}/> : <Timer value={0} endtime={10}/>}
+     
+      
     </div>
   );
 }
